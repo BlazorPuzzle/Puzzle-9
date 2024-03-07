@@ -1,0 +1,40 @@
+﻿@page "/"
+@inject IJSRuntime jSRuntime
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+<button class="btn btn-primary" @onclick="ShowTextField">Show Text Field</button>
+
+@if (show)
+{
+    <br/>
+    <br/>
+    <input id="myInput" />
+}
+
+<br/>
+<br/>
+<input  />
+
+<br />
+<br />
+<button class="btn btn-primary" @onclick="Button2_Click">Click me</button>
+
+@code 
+{
+    bool show = false;
+
+    void Button2_Click()
+    {
+
+    }
+
+    async Task ShowTextField()
+    {
+        show = true;
+        await jSRuntime.InvokeVoidAsync("SetFocus", "myInput");
+    }
+
+}
